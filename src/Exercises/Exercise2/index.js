@@ -1,4 +1,5 @@
-// faça uma função que recebe um objeto como primeiro parametro e como segundo parametro um objeto com dados que vão atualizar o objeto do primeiro parametro
+// faça uma função que recebe um objeto como primeiro parametro e como segundo parametro
+//um objeto com dados que vão atualizar o objeto do primeiro parametro
 // Obs: se no objeto do segundo parametro tiver dados que o objeto do primeiro não tem, o valor não deve persistir no objeto de retorno da função, somente
 // é atualizado os dados que o objeto do primeiro parametro possuir.
 
@@ -12,7 +13,12 @@
 // --> saida: { name: "Camiseta Polo", price: 59.9, amount: 30 }
 
 function updateData(currentObject, newDataObject) {
-  //you code here...
+  Object.keys(currentObject).forEach((key) => {
+    if (key in newDataObject) {
+      currentObject[key] = newDataObject[key];
+    }
+  });
+  return currentObject;
 }
 
 module.exports = updateData;

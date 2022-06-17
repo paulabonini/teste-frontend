@@ -38,7 +38,21 @@
 // ]
 
 async function getRicAndMortyCharacters() {
-  //you code here...
+  const axios = require("axios").default;
+  const apiResponse = await axios
+    .get("https://rickandmortyapi.com/api/character/[1,2,3,4,5]")
+    .then((res) => res.data);
+
+  const result = apiResponse.map((character) => {
+    return {
+      nome: character.name,
+      genero: character.gender === "Male" ? "Homem" : "Mulher",
+      avatar: character.image,
+      especie: character.species === "Human" && "Humano",
+    };
+  });
+
+  return result;
 }
 
 module.exports = getRicAndMortyCharacters;

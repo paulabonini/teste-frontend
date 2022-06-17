@@ -1,5 +1,6 @@
 // Escreva um programa que imprima os números de 1 a 25. Mas para múltiplos de três imprima "Fizz"
-// em vez do número e para os múltiplos de cinco imprima "Buzz". Para números que são múltiplos de três e cinco, imprima "FizzBuzz"
+// em vez do número e para os múltiplos de cinco imprima "Buzz".
+//Para números que são múltiplos de três e cinco, imprima "FizzBuzz"
 
 // Ex saida:
 // [
@@ -20,8 +21,30 @@
 //     49,         'Buzz', 50
 //   ]
 
+// O enunciado diz para imprimir a palavra no lugar do número, mas no teste ambos estão sendo impressos.
+//Para imprimir apenas a palavra no lugar do número seria necessário remover as linhas marcadas com 'rm'.
 function fizzBuzz(number) {
-  //you code here...
+  const fizzBuzzArray = [];
+
+  for (let i = 1; i <= number; i++) {
+    const multipleOf3 = i % 3 === 0;
+    const multipleOf5 = i % 5 === 0;
+
+    if (multipleOf3 && multipleOf5) {
+      fizzBuzzArray.push("FizzBuzz");
+      fizzBuzzArray.push(i); //rm
+    } else if (multipleOf3) {
+      fizzBuzzArray.push("Fizz");
+      fizzBuzzArray.push(i); //rm
+    } else if (multipleOf5) {
+      fizzBuzzArray.push("Buzz");
+      fizzBuzzArray.push(i); //rm
+    } else {
+      fizzBuzzArray.push(i);
+    }
+  }
+
+  return fizzBuzzArray;
 }
 
 module.exports = fizzBuzz;
